@@ -13,8 +13,6 @@
 - (void)pluginInitialize
 {
 
-  self.webView.backgroundColor = [UIColor clearColor];
-  self.webView.opaque = NO;
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pageDidLoad) name:CDVPageDidLoadNotification object:nil];
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     self.executeQueue =  [NSOperationQueue new];
@@ -66,20 +64,21 @@
   self.viewPlugins = [[NSMutableDictionary alloc] init];
 
   self.pluginLayer = [[MyPluginLayer alloc] initWithWebView:self.webView];
-  self.pluginLayer.backgroundColor = [UIColor whiteColor];
+  self.pluginLayer.backgroundColor = [UIColor clearColor];
   self.pluginLayer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
+  self.pluginLayer.userInteractionEnabled = NO;
 
-  NSArray *subViews = self.viewController.view.subviews;
-  //NSLog(@"--->subViews count=%lu", subViews.count);
-  UIView *view;
-  for (int i = 0; i < [subViews count]; i++) {
-    view = [subViews objectAtIndex:i];
-    //NSLog(@"--->remove i=%d class=%@", i, view.class);
-    [view removeFromSuperview];
-    [self.pluginLayer addSubview: view];
-  }
   [self.viewController.view addSubview:self.pluginLayer];
+  [self.viewController.view sendSubviewToBack:self.pluginLayer];
+
+  NSString *splashScreenDelayString = [((CDVViewController *)self.viewController).settings objectForKey:@"splashscreendelay"];
+  double splashScreenDelay = splashScreenDelayString ? [splashScreenDelayString doubleValue] : 0;
+  splashScreenDelay += 2000;
+  
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(splashScreenDelay * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+    [self.viewController.view bringSubviewToFront:self.pluginLayer];
+  });
 }
 - (void) didRotate:(id)sender
 {
