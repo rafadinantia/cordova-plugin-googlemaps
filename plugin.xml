@@ -176,9 +176,12 @@
       <feature name="PluginGroundOverlay">
         <param name="android-package" value="plugin.google.maps.PluginGroundOverlay"/>
       </feature>
+      <!-- Commented out for Google Play 16 kB page size compatibility -->
+      <!--
       <feature name="PluginKmlOverlay">
         <param name="android-package" value="plugin.google.maps.PluginKmlOverlay"/>
       </feature>
+      -->
       <feature name="PluginGeocoder">
         <param name="android-package" value="plugin.google.maps.PluginGeocoder"/>
       </feature>
@@ -208,7 +211,8 @@
     <source-file src="src/android/plugin/google/maps/PluginGeocoder.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginLocationService.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginGroundOverlay.java" target-dir="src/plugin/google/maps"/>
-    <source-file src="src/android/plugin/google/maps/PluginKmlOverlay.java" target-dir="src/plugin/google/maps"/>
+    <!-- Commented out for Google Play 16 kB page size compatibility -->
+    <!-- <source-file src="src/android/plugin/google/maps/PluginKmlOverlay.java" target-dir="src/plugin/google/maps"/> -->
     <source-file src="src/android/plugin/google/maps/PluginMap.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginMarker.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginPolygon.java" target-dir="src/plugin/google/maps"/>
@@ -222,9 +226,12 @@
     <source-file src="src/android/plugin/google/maps/PluginStreetViewPanorama.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/IPluginView.java" target-dir="src/plugin/google/maps"/>
 
+    <!-- Commented out for Google Play 16 kB page size compatibility -->
+    <!--
     <framework src="src/android/frameworks/tbxml-android.gradle" custom="true" type="gradleReference"/>
     <resource-file src="src/android/frameworks/tbxml-android.aar" target="libs/tbxml-android.aar"/>
     <resource-file src="src/android/frameworks/tbxml-android.aar" target="app/src/libs/tbxml-android.aar"/>
+    -->
 
 
     <framework src="src/android/frameworks/pgm-custom.gradle" custom="true" type="gradleReference"/>
@@ -322,9 +329,12 @@
       <feature name="PluginGroundOverlay">
         <param name="ios-package" value="PluginGroundOverlay"/>
       </feature>
+      <!-- Commented out for Google Play 16 kB page size compatibility -->
+      <!--
       <feature name="PluginKmlOverlay">
         <param name="ios-package" value="PluginKmlOverlay"/>
       </feature>
+      -->
       <feature name="PluginMarker">
         <param name="ios-package" value="PluginMarker"/>
       </feature>
@@ -361,8 +371,11 @@
     <source-file src="src/ios/GoogleMaps/PluginMapViewController.m"/>
     <header-file src="src/ios/GoogleMaps/PluginGroundOverlay.h"/>
     <source-file src="src/ios/GoogleMaps/PluginGroundOverlay.m"/>
+    <!-- Commented out for Google Play 16 kB page size compatibility -->
+    <!--
     <header-file src="src/ios/GoogleMaps/PluginKmlOverlay.h"/>
     <source-file src="src/ios/GoogleMaps/PluginKmlOverlay.m"/>
+    -->
     <header-file src="src/ios/GoogleMaps/PluginMap.h"/>
     <source-file src="src/ios/GoogleMaps/PluginMap.m"/>
     <header-file src="src/ios/GoogleMaps/PluginMarker.h"/>
@@ -492,9 +505,12 @@
     <js-module name="PluginGroundOverlay" src="src/browser/PluginGroundOverlay.js">
       <runs/>
     </js-module>
+    <!-- Commented out for Google Play 16 kB page size compatibility -->
+    <!--
     <js-module name="PluginKmlOverlay" src="src/browser/PluginKmlOverlay.js">
       <runs/>
     </js-module>
+    -->
     <js-module name="PluginMarkerCluster" src="src/browser/PluginMarkerCluster.js">
       <runs/>
     </js-module>
